@@ -1,0 +1,96 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  font-family: arial;
+  margin-bottom: 100px;
+}
+
+main {
+  margin: 30px;
+}
+
+h1 {
+  text-align: center;
+  background-color: black;
+  color: yellow;
+  margin: 0;
+  padding: 15px;
+}
+
+p {
+  text-align: justify;
+}
+
+.navBox {
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  background-color: black;
+  padding: 0 10px 10px;
+}
+
+.navItem {
+  display: inline-block;
+  padding: 0 10px;
+  color: yellow;
+}
+
+li:hover {
+  background-color: yellow;
+  color: black;
+}
+
+.main {
+  margin: 0 10%;
+}
+
+input,
+select {
+  margin: 20px 10px 0;
+}
+
+.card {
+  background-color: yellow;
+  width: 150px;
+  display: inline-block;
+  margin: 20px;
+  padding: 0 30px;
+  border: black solid 4px;
+  border-radius: 25px;
+  box-shadow: grey 10px 10px;
+}
+
+.code {
+  color: yellow;
+  background-color: darkblue;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+hr {
+  margin: 20px 0;
+}
+
+button {
+  height: 30px;
+  width: 80px;
+  border-radius: 10px;
+  background-color: yellow;
+  color: maroon;
+  margin: 0 20px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  background-color: black;
+  color: yellow;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  padding: 7px;
+}
