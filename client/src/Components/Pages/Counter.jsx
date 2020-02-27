@@ -1,15 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 function Counter() {
-  let [number, incrementNumber] = useState(0);
+  function useInterval(callback, delay) {
+    const savedCallback = useRef();
 
-  // Make sure to pace an if statement to prevent re-rendering on state change.
-  let counter;
-  if (number === 0) counter = setInterval(updateNumber, 1000);
+    // Remember the latest callback.
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
 
-  function updateNumber() {
-    incrementNumber(++number);
+    // Set up the interval.
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        // console.log("Setting interval...");
+        return () => {
+          clearInterval(id);
+          // console.log("Interval is clearing");
+        };
+      }
+    }, [delay]);
   }
+
+  function Counter() {
+    let [count, setCount] = useState(0);
+
+    useInterval(() => {
+      // Your custom logic here
+      setCount(count + 1);
+      // console.log("Incrementing count to " + count);
+    }, 1000);
+
+    return (
+      <h2
+        className="main"
+        style={{
+          fontSize: "2em",
+          color: "yellow",
+          textAlign: "center",
+          backgroundColor: "darkblue",
+          width: "40px",
+          margin: "auto",
+          borderRadius: "1000px",
+          border: "solid black 6px",
+          padding: "30px"
+        }}
+      >
+        {count}
+      </h2>
+    );
+  }
+  // Make sure to pace an if statement to prevent re-rendering on state change
 
   return (
     <div className="main">
@@ -19,17 +63,7 @@ function Counter() {
         behavior of states and setInterval:
       </p>
       <p className="code">setInterval( function, 1000 )</p>
-      <h2
-        className="main"
-        style={{
-          fontSize: "2em",
-          margin: "0px",
-          color: "maroon",
-          textAlign: "center"
-        }}
-      >
-        {number}
-      </h2>
+      {Counter()}
       <ul>
         <li>
           This function executes the function in the first parameter every
@@ -62,3 +96,4 @@ function Counter() {
 }
 
 export default Counter;
+
